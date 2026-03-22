@@ -451,7 +451,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 /* Hidden iframe */
-#sc-frame { display: none; position: absolute; }
+#sc-frame { position: fixed; width: 1px; height: 1px; top: -9999px; left: -9999px; opacity: 0; pointer-events: none; border: none; }
 
 /* Fade-in */
 @keyframes fadeUp {
@@ -591,7 +591,7 @@ function loadSCAPI() {
 function initPlayer() {
   const frame = document.getElementById('sc-frame');
   frame.src = `https://w.soundcloud.com/player/?url=${encodeURIComponent(PLAYLIST_URL)}&auto_play=false&hide_related=true&show_comments=false&show_user=false&buying=false&liking=false&download=false&sharing=false&show_artwork=true&show_playcount=false&show_teaser=false`;
-  frame.style.display = 'block';
+  
 
   const tryBind = () => {
     if (!window.SC || !window.SC.Widget) { setTimeout(tryBind, 200); return; }
